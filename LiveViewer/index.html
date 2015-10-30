@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+</head>
+<body>
+    <div style="width: 1024px; height: 768px; position: relative;">
+        <video id="LiveVideo"style="position: absolute; top: 0px;" width="1024" height="768" webkit-playsinline loop>
+            <source src="res/IMG_3624.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <img id="LivePicture" style="position: relative;" src="res/IMG_3624.jpg" alt="pic" height="768" width="1024">
+    </div>
+</body>
+<script>
+    $('#LivePicture').mousedown(function () {
+        //do something here
+        console.log("hello");
+        document.getElementById("LivePicture").style.visibility = "hidden";
+        document.getElementById('LiveVideo').play();
+        timeout = setInterval(function () {
+            //do same thing here again
+            document.getElementById("LivePicture").style.visibility = "hidden";
+            document.getElementById('LiveVideo').play();
+        }, 500);
+
+        return false;
+    });
+    $('#LivePicture').mouseup(function () {
+        clearInterval(timeout);
+        document.getElementById("LivePicture").style.visibility = "visible";
+        document.getElementById('LiveVideo').pause();
+        return false;
+    });
+    $('#LivePicture').mouseout(function () {
+        clearInterval(timeout);
+        document.getElementById("LivePicture").style.visibility = "visible";
+        document.getElementById('LiveVideo').pause();
+        return false;
+    });
+</script>
+</html>
